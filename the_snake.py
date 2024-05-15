@@ -26,6 +26,8 @@ APPLE_COLOR = (255, 0, 0)
 # Цвет змейки
 SNAKE_COLOR = (0, 255, 0)
 
+DEFAULT_COLOR = (100, 100, 100)
+
 # Скорость движения змейки:
 SPEED = 20
 
@@ -33,30 +35,68 @@ SPEED = 20
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
 # Заголовок окна игрового поля:
-pygame.display.set_caption('Змейка')
+pygame.display.set_caption("Змейка")
 
 # Настройка времени:
 clock = pygame.time.Clock()
 
 
 # Тут опишите все классы игры.
-...
+class GameObject:
+
+    def __init__(self):
+        self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
+        self.body_color = DEFAULT_COLOR
+
+    def draw(self):
+        pass
+
+
+class Apple(GameObject):
+
+    def __init__(self) -> None:
+        self.body_color = APPLE_COLOR
+        self.position = self.randomize_position()
+
+    def randomize_position(self) -> tuple[int, int]:
+        return (
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
+        )
+
+    def draw(self):
+        rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
+        pygame.draw.rect(screen, self.body_color, rect)
+        pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
+
+
+class Snake(GameObject):
+    pass
 
 
 def main():
     # Инициализация PyGame:
     pygame.init()
     # Тут нужно создать экземпляры классов.
-    ...
+    apple = Apple()
 
-    # while True:
-    #     clock.tick(SPEED)
+    apple.draw()
 
-        # Тут опишите основную логику игры.
-        # ...
+    while True:
+        clock.tick(SPEED)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.QUIT
+                return
+
+        pygame.display.update()
+
+    # Тут опишите основную логику игры.
+    # ...
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
 
 
