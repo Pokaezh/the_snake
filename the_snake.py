@@ -1,6 +1,7 @@
 """Игра "Змейка". Рабоает с использованием библиотеки Pygame."""
 
 from random import randint
+
 import pygame
 
 # Константы для размеров поля и сетки:
@@ -46,9 +47,6 @@ clock = pygame.time.Clock()
 
 class GameObject:
     """Класс для описания всех объектов в игре."""
-
-    body_color = DEFAULT_COLOR  # цвет объекта
-    position = SCREEN_CENTER  # позиция объекта на игровом поле
 
     def __init__(self):
         """Метод инициализции объектов класса."""
