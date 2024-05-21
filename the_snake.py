@@ -69,7 +69,7 @@ class Apple(GameObject):
         self.body_color = APPLE_COLOR
         self.position = self.randomize_position()
 
-    def randomize_position(self) -> tuple[int, int]:
+    def randomize_position(self):
         """Метод для появления нового яблока в случайном месте."""
         return (
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
