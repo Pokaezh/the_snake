@@ -63,7 +63,7 @@ class GameObject:
 class Apple(GameObject):
     """Класс для описания яблока"""
 
-    def __init__(self) -> None:
+    def __init__(self):
         """Метод для инициализации яблока."""
         super().__init__()
         self.body_color = APPLE_COLOR
